@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], //Ele entende que vamos trabahar com algumas libs e assim adiciona tipagens 
+    "allowJs": true, //Ele avisa que vamos ter arquivos JS tanto typescript 
+    "jsx": "react-jsx", //Avisa que estmos usando jsx
+    "noEmit": true, //Caso executemos o build da noss aplicação ele nao emite o codigo dela 
+    "strict": true, //Ele entra  no modo strict do JS 
+    "moduleResolution": "node", //
+    "resolveJsonModule": true, //Possibilidade de importar arquivos json 
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src"
+  ] //Informamos aonde o codigo da nossa aplicação esta 
+}
