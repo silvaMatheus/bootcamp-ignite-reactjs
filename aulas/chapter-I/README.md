@@ -7,7 +7,7 @@
 >Webpack, Babel, Webpack Dev server, SASS,Source Maps, Fast Refresh
 >Conceitos importantes do React como componentes, propriedades, estados e hooks além de aplicar o .TypeScript no nosso projeto para adicionar tipagem estática à aplicação.
 ---
-<br>
+
 
 ## Conteudo
 

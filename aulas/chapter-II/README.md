@@ -5,8 +5,10 @@
 
 >Desenvolvimento de uma aplicação front-end web complete, usando conceitos e ferramentas importantrs no ecossistema React como Styled Components, MirageJs, Context API, hooks, axios entre outros.
 <br>
+
 ---
 ## Conteudo
+
   * [Estrutura com create-react-app](#create-react-app)
   * [Styled-Components](#Styled-Components)
 
