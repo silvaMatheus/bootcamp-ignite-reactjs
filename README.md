@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="../images/bgIgnite.png" alt="Ignite" width="100%"/>
+  <img src="images/bgIgnite.png" alt="Ignite" width="100%"/>
   Bootcamp Ignite - ReactJS 🚀
 </h1>
 
