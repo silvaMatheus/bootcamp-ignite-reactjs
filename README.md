@@ -32,10 +32,11 @@ O Ignite é dividido em trilhas de conhecimento não-dependentes onde nos aprofu
 
 Abaixo você encontra o índice de cada desafio do Ignite:
 
-1 -  [Chapter I - Fundamentos do React](www.google.com)
-  - [Desafio react concepts](www.google.com)
+1 -  [Chapter I - Fundamentos do React](aulas/chapter-I)
+  - [Desafio react concepts](desafios/challenge-react-concepts)
+  - [Desafio extra](desafios/challenges-componentizando-a-aplicacao)
 
-2 - [Chapter II - Fundamentos do React](www.google.com)
+2 - [Chapter II - Fundamentos do React](aulas/chapter-II)
 
 
 ---
