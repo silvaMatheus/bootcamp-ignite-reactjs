@@ -140,3 +140,85 @@ Todos elementos que estejam disabled vao receber o css.
   cursor:not-allowed;
 }
 ```
+
+# Front end sem back 
+
+>Algumas vezes precisamos testar nossa aplicação porem o back end ainda não esta pronto, podemos usar ferramentas que criam um "back" dentro do nosso front para testarmos nossa aplicação.
+
+Exemplo de duas erramentas
+
+- MirageJS. Muito completa, um framework inteira dessas APIs fakes. Contendo até banco de dados integrado e outras features desenvolvidas
+- JSON server. Bem completa e simples de utilizar
+
+## MirageJS
+Instalação
+```sh
+npm install miragejs 
+```
+Quando usamos uma api geralmente usamos um fetch + endereço da api
+```js 
+    fetch('endereço da minha api')
+```
+Quando usamos o mirage colocamos o endereço da nossa propia aplicação.
+
+```js 
+    fetch('endereço da minha aplicação')
+```
+importamos a função 'createServer' do miraje dentro do nosso index.tsx. 
+
+>Chamamos a função createServer, dentro dela definimos as rotas que vamos ter na nossa API fake, Quando acontecer uma chamada do tipo get para a rota... eu vou devolver alguma coisa  
+
+```js
+import { createServer } from 'miragejs'
+
+createServer({
+  routes() {
+    this.namespace = 'api';//todas chamadas é logo depois desse endereço 
+   
+    //quando acontecer uma requisição do tipo get para rota 
+    this.get('/transactions', () => {
+      return [
+        {
+          id: 1,
+          title: "Transaction 1",
+          amount: 400,
+          type: 'deposit',
+          category: 'food',
+          createdAt: new Date()
+        }
+      ]
+    })
+  }
+})
+```
+# Axios
+>Configurar um cliente HTTP com axios.
+
+### Por que nao usar fetch ???
+fetch precisamos colocar o endereço sempre q a gente chamar. Sempre precisamos transformar nossa reposta em JSON.
+
+Axios
+- Interceptar requisições e repostas. Conseguimos criar regras.
+
+Instalação 
+```sh
+npm install axios 
+```
+Criamos uma pasta services(serviços de dados vão estar dentro)
+
+
+Configuração
+```js
+import axios from 'axios';
+
+//criando um instancia, colocamos informações padroes para nossas requisições.
+export const api = axios.create({
+  baseUrl: "http://localhost:3000/api",
+  //Endereço que é usado em todas requisições
+})
+```
+
+# React-Modal 
+>Uma biblioteca que esta dentro do [reactjs](github.com/reactjs/react-modal) Ela possui algumas funcionalidades voltadas para criação de modais ex:
+  * Apertar "esc" ele fecha o modal.
+  * Cliando na parte de fora ele ja fecha o modal.

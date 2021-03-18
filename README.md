@@ -13,7 +13,7 @@
 
   <img src="https://img.shields.io/badge/Projetos-0-27ccea" alt="Projetos">
 
-  <img src="https://img.shields.io/badge/Aulas-0-27ccea" alt="Aulas">
+  <img src="https://img.shields.io/badge/Aulas-24-27ccea" alt="Aulas">
 
   <img src="https://img.shields.io/github/license/carlosmfreitas2409/bootcamp-ignite-reactjs?style=flat-&&color=27ccea" />
 
