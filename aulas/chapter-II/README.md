@@ -1,7 +1,13 @@
-<img alt="ignite" src="../../../images/chapter-II.jpg" />
+
+<img alt="ignite" src="../../images/chapter-II.jpg"/>
+
+
 <h2 align="center">
 
+
 </h2>
+
+
 
 >Desenvolvimento de uma aplicação front-end web complete, usando conceitos e ferramentas importantrs no ecossistema React como Styled Components, MirageJs, Context API, hooks, axios entre outros.
 <br>
