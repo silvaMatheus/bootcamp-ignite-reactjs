@@ -228,3 +228,8 @@ export const api = axios.create({
 >Uma biblioteca que esta dentro do [reactjs](github.com/reactjs/react-modal) Ela possui algumas funcionalidades voltadas para criação de modais ex:
   * Apertar "esc" ele fecha o modal.
   * Cliando na parte de fora ele ja fecha o modal.
+
+  
+  # Context API
+  
+
