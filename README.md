@@ -9,9 +9,9 @@
 
 <p align="center">
 
-  <img src="https://img.shields.io/badge/Desafios-2-27ccea" alt="Desafios">
+  <img src="https://img.shields.io/badge/Desafios-3-27ccea" alt="Desafios">
 
-  <img src="https://img.shields.io/badge/Projetos-0-27ccea" alt="Projetos">
+  <img src="https://img.shields.io/badge/Projetos-4-27ccea" alt="Projetos">
 
   <img src="https://img.shields.io/badge/Aulas-24-27ccea" alt="Aulas">
 
@@ -32,22 +32,23 @@ O Ignite é dividido em trilhas de conhecimento não-dependentes onde nos aprofu
 
 Abaixo você encontra o índice de cada desafio do Ignite:
 
-1 -  [Chapter I - Fundamentos do React](aulas/chapter-I)
-  - [Desafio react concepts](desafios/challenge-react-concepts)
-  - [Desafio extra](desafios/challenges-componentizando-a-aplicacao)
+1 - [Chapter I - Fundamentos do React](aulas/chapter-I)
 
-2 - [Chapter II - Fundamentos do React](aulas/chapter-II)
+- [Desafio react concepts](desafios/challenge-react-concepts)
+- [Desafio extra](desafios/challenges-componentizando-a-aplicacao)
 
+2 - [Chapter II - Primeira aplicação web com ReactJS](aulas/chapter-II)
+
+3 - [Chapter III - NextJS, Back-end no front-end  e JAMStack](aulas/chapter-III)
 
 ---
 
 ## 📝 Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para 
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para
 mais detalhes.
 
 <br>
 
 ---
-
 Feito com 💙  por Matheus Silva
