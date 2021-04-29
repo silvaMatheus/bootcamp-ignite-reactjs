@@ -2,7 +2,7 @@
 
 Um framework criado em cima do react, ele foi feito para SSR(Server-Side Rendering)
 
-<img src="../../images/ssr.png" alt="Ignite" width="100%"/>
+<img src="../../images/ssr.png" alt="Ignite" width="50%"/>
 
 # Criando uma estrutura next.js
 
