@@ -23,7 +23,7 @@ module.exports = {
   rules: {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', 'jsx', '.js'] }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', 'jsx', '.js', '.ts'] }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
@@ -35,14 +35,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/jsx-one-expression-per-line': 'off',
     // allow jsx syntax in js files (for next.js project)
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
+    'import/resolver': 'webpack',
   },
   settings: {
     'import/resolver': {
