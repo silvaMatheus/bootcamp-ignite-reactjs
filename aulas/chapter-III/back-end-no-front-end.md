@@ -96,7 +96,7 @@ const [session] = useSession();
 Precisamos configurar nossa conta no [Fauna](https://fauna.com/) e em seguida instalar o SDK
 
 ```js
-  install faundadb
+  npm install faunadb
 ```
 
 No nosso arquivo env precisamos colocar a  key gerada no fauna
@@ -171,4 +171,141 @@ export default NextAuth({
       },
     }
 })
+```
+
+## Utilizando o stripe
+
+Como o stripe possui uma key secreta na qual precisamos tomar cuidado, iremos criar uma chamada ao stripe dentro da pasta API
+
+```js
+import { NextApiRequest, NextApiResponse } from "next";
+import {stripe} from '../../services/stripe';
+import {getSession} from 'next-auth/client';
+
+export default async(req: NextApiRequest, res: NextApiResponse) => {
+    if (req.method === 'POST'){
+       
+        //Pega o cookie daquela session 
+        const session = await getSession({req});
+
+        //Pega o email da session
+        const stripeCustomer = await stripe.customers.create({
+          email:session.user.email,
+        })
+        
+        //Cria uma session dentro do stripe usando o email da session do github que esta armazenada nos cookies 
+        const stripeCheckoutSession = await stripe.checkout.sessions.create({
+          customer: stripeCustomer.id,//id do stripe e nao do fauna 
+          payment_method_types:['card'],//metodos de pagamento 
+          billing_address_collection: 'required',//se vai ser necessario o user preencher o endereço de pagamento
+          line_items: [//item e quantidade 
+            {price:'price_1IlhuDHtkJ5nuPyTh7EgTvds', quantity:1}
+          ],
+          mode: 'subscription',//Se e uma assinatura
+          allow_promotion_codes: true,//Se o usuario vai poder colocar cupons de desconto 
+          success_url: process.env.STRIPE_SUCCESS_URL,//Criamos uma var no env para ficar mais organizado, url no qual o usuario é redirecionado caso tenha concluido a compra 
+          cancel_url: process.env.STRIPE_CANCEL_URL
+          //Url caso o user nao tenha completado a compra
+        })
+
+        return res.status(200).json( {sessionId: stripeCheckoutSession.id});//Retorna um 200 informando que esta tudo ok 
+    } else {
+      res.setHeader('Allow', 'POST');
+      res.status(405).end('Method not allowed');
+    }
+}
+```
+
+## Criando o redirecionamento
+
+Comunicar o front end com o api routes.
+
+Podemos usar fatch mas nesse caso usamos o axios
+
+```js
+  npm install axios
+```
+
+Criamos um arquivo subscribe.ts, vai ficar responsavel por configurar o stripe
+
+```js
+import { loadStripe } from '@stripe/stripe-js'
+
+export async function getSripeJs(){
+  const stripeJs = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
+  //Criamos uma var NEXT_PUBLIC_STRIPE_PUBLIC_KEY com a chave publica.
+  return stripeJs;
+}
+```
+
+Criamos um arquivo api.ts, vai ficar responsavel por conectar com o axios
+
+```js
+import axios from 'axios';
+
+export  const api = axios.create({
+  baseURL: '/api',
+})
+```
+
+No nosso componente fazemos a comunicação com o axios fazendo a solicitação para
+o stripe.
+
+```js
+const [session] = useSession();
+
+  async function handleSubscribe(){
+    if(!session){
+      signIn('github');
+      return;
+    }
+
+    //criação da checkout session
+    try {
+      const response = await api.post('/subscribe');
+      //se comunica com o axios 
+      const {sessionId} = response.data;
+
+      const stripe = await getSripeJs();
+      //Usamos o stripe JS para o redirecionamento para a pagina de criação 
+      await stripe.redirectToCheckout({sessionId});
+      //Passamos o id da session criada 
+    }catch(err){
+      alert(err.message);
+    }
+  }
+```
+
+Para gente verificar  se ja existe o usuario podemos usar o faunaDB
+
+```js
+  const user = await fauna.query<User>(
+          q.Get(
+            q.Match(
+              q.Index('user_by_email'),
+              q.Casefold(session.user.email)
+            )
+          )
+        )
+
+        let customerId = user.data.stripe_customer_id;
+
+        if(!customerId){
+        
+        const stripeCustomer = await stripe.customers.create({
+          email:session.user.email,
+        })
+
+        await fauna.query(
+          q.Update(
+            q.Ref(q.Collection('users'), user.ref.id),
+            {
+              data:{
+                stripe_customer_id: stripeCustomer.id,
+              }
+            }
+          )
+        )
+        customerId = stripeCustomer.id;
+      }
 ```
