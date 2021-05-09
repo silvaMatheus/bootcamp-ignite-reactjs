@@ -309,3 +309,14 @@ Para gente verificar  se ja existe o usuario podemos usar o faunaDB
         customerId = stripeCustomer.id;
       }
 ```
+
+# Ouvindo webhooks
+
+  > Quando uma aplicação de terceiro avisa nossa aplicação que algum evento ocorreu
+Webhook é um patter utilizado para integração de sistemas web.
+
+Geralmente usado para sistemas de terceiros retornarem alguma informação.
+
+Ele usa uma rota http para se comunicar com a gente. Definimos a rota no qual o sistema de terceiro pode entrar em contato conosco.
+
+No caso do stripe precisamos configurar um end point para aonde ele vai mandar os eventos
