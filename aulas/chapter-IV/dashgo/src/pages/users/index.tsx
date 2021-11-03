@@ -13,19 +13,15 @@ export default function UserList() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
-  })
+  });
 
   return (
     <Box>
       <Header />
-
       <Flex w="100%" my="6" maxWidth={1480} mx="auto" px="6">
         <SideBar />
-
-
         <Box flex="1" borderRadius="8" bg="gray.800" p="8">
           <Flex mb="8" justify="space-between" align="center">
-
             <Heading size="lg" fontWeight="normal">
               Usuarios
               {!isLoading && isFetching && <Spinner size="sm" color="gray.500" ml="4" />}
@@ -42,9 +38,7 @@ export default function UserList() {
                 Criar novo
               </Button>
             </Link>
-
           </Flex>
-
           {isLoading ? (
             <Flex justify="center">
               <Spinner />
@@ -81,23 +75,27 @@ export default function UserList() {
                             <Text fontSize="sm" color="gray.300" >{user.email}</Text>
                           </Box>
                         </Td>
+
                         {isWideVersion && <Td> {user.createdAt} </Td>}
+                        {isWideVersion && <Td> {user.createdAt} </Td>}
+                        {isWideVersion && <Td> {user.createdAt} </Td>}
+                        {isWideVersion && <Td> {user.createdAt} </Td>}
+
+
+                        <Td>
+                          <h1>teste</h1>
+                        </Td>
 
                       </Tr>
                     )
-
                   })}
                 </Tbody>
               </Table>
-
               <Pagination />
             </>
           )}
-
         </Box>
       </Flex>
     </Box>
-
-
   )
 }
