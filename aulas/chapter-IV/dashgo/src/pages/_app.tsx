@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
+
         <SideBarDrawerProvider >
           <Component {...pageProps} />
         </SideBarDrawerProvider>
