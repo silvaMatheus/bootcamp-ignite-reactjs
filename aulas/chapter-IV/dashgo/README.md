@@ -1,5 +1,5 @@
 
-<img alt="ignite" src="../../images/chapter-IV.jpg"/>
+<img alt="ignite" src="../../../images/chapter-IV.jpg"/>
 
 
 
